@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iron.alltact.mybatis.mappers.MemberMapper">
+
+    <resultMap id="memberResultMap" type="com.iron.alltact.member.domain.Member">
+        <id property="memberNo" column="MEMBER_NO"/>
+        <result property="email" column="MEMBER_MAIL"/>
+        <result property="password" column="MEMBER_PW"/>
+        <result property="name" column="MEMBER_NM"/>
+        <result property="createdTime" column="CRTD_TM"/>
+    </resultMap>
+
+	<insert id="addMember">
+		 INSERT INTO AT_MEMBER(
+			    MEMBER_MAIL
+			  , MEMBER_PW
+			  , MEMBER_NM
+			  , CRTD_TM
+		 )
+		 VALUES (
+				#{email}
+			  , #{password}
+			  , #{name}
+			  , NOW()
+		 )
+	</insert>
+
+<!--    <select id="findAll" resultMap="memberResultMap">-->
+<!--        SELECT *-->
+<!--          FROM BMK_MEMBER;-->
+<!--    </select>-->
+
+<!--    <select id="login" resultMap="memberResultMap">-->
+<!--        SELECT MEMBER_ID-->
+<!--        , MEMBER_PW-->
+<!--        , MEMBER_NM-->
+<!--        , ALARM-->
+<!--        , REG_DTM-->
+<!--        FROM BMK_MEMBER-->
+<!--        WHERE MEMBER_ID = #{loginId}-->
+<!--          AND MEMBER_PW = #{loginPw}-->
+<!--    </select>-->
+
+<!--    <select id="findById" resultMap="memberResultMap">-->
+<!--        SELECT MEMBER_ID-->
+<!--             , MEMBER_PW-->
+<!--             , MEMBER_NM-->
+<!--             , ALARM-->
+<!--             , REG_DTM-->
+<!--          FROM BMK_MEMBER-->
+<!--         WHERE MEMBER_ID = #{memberId}-->
+<!--    </select>-->
+
+
+<!--    <update id="editMember">-->
+<!--        UPDATE BMK_MEMBER-->
+<!--           SET MEMBER_PW = #{memberPw}-->
+<!--             , MEMBER_NM = #{memberNm}-->
+<!--             , ALARM     = #{alarm}-->
+<!--         WHERE MEMBER_ID = #{memberId}-->
+<!--    </update>-->
+</mapper>
